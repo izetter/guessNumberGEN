@@ -1,12 +1,13 @@
-// The commented out code inside the function is just for visualization
-// of results/iteratios if you want to see them.
+// the lines with a " V " comment indicate visualization/report code to console,
+// those lines can be commented out with no issue
 function guessNumber(min, max) {
+	alert(`piensa en un número del ${min} al ${max}`);
 	let guess = Math.floor((max - min) / 2);
 	let currentMin = min;
 	let currentMax = max;
 	let keepGuessing = true;
-	const results = [];
-	results.push({guess, currentMin, currentMax});
+	const results = [];	// V
+	results.push({guess, currentMin, currentMax});	// V
 	while (keepGuessing) {
 		if (confirm(`¿Tu número es mayor que ${guess}?`)) {
 			currentMin = guess + 1;
@@ -19,14 +20,9 @@ function guessNumber(min, max) {
 			guess = Math.floor((currentMax - currentMin) / 2 + currentMin);
 		}
 		if (currentMin === currentMax) keepGuessing = false;
-		results.push({guess, currentMin, currentMax});
+		results.push({guess, currentMin, currentMax});	// V
 	}
-	console.table(results);
-	console.log(`guess: ${guess}, actual: ${42}`);
+	console.table(results);	// V
 	alert(`Tu número es ${guess}, excelente decisión.`)
 	return guess;
 }
-
-
-alert('piensa en un número del 1 al 100');
-guessNumber(1, 100);
