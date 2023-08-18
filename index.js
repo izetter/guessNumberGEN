@@ -19,6 +19,7 @@ function guessNumber(min, max) {
 			currentMax = guess - 1;
 			guess = Math.floor((currentMax - currentMin) / 2 + currentMin);
 		}
+		if (currentMin === currentMax) keepGuessing = false;
 		results.push({guess, currentMin, currentMax});	// V
 	}
 	console.table(results);	// V
@@ -29,7 +30,14 @@ function guessNumber(min, max) {
 
 
 /* 
+
+Line 22 may seem redundant but it's the opposite, on certain edge cases,
+it prevents one or two extra, redundant question from being
+prompted to the user when the number can already be guessed.
+e.g, in a range of 1 to 100, pick the number 5 and compare
+with and without line 22
+
 The ` break; ` on line 17 is for visualization because it prevents
-line 22, which is also for visualization, from running when the number has been guessed,
+line 23, which is also for visualization, from running when the number has been guessed,
 and thus, avoids an extra, duplicate line in the "report" table in console.
 */
